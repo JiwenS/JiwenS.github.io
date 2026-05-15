@@ -1,0 +1,48 @@
+---
+type ExternalIcon = "email" | "github" | "linkedin" | "rss";
+
+interface Props {
+  href: string;
+  label: string;
+  icon: ExternalIcon;
+  newTab?: boolean;
+}
+
+const { href, label, icon, newTab = true } = Astro.props;
+const target = newTab ? "_blank" : undefined;
+const rel = newTab ? "noreferrer" : undefined;
+---
+
+<a class="external-icon-link" href={href} aria-label={label} target={target} rel={rel}>
+  {
+    icon === "email" && (
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6h16v12H4z" />
+        <path d="m4 7 8 6 8-6" />
+      </svg>
+    )
+  }
+  {
+    icon === "github" && (
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.19-3.37-1.19a2.65 2.65 0 0 0-1.11-1.46c-.91-.62.07-.61.07-.61a2.1 2.1 0 0 1 1.53 1.03 2.13 2.13 0 0 0 2.91.83 2.14 2.14 0 0 1 .63-1.34c-2.22-.25-4.56-1.11-4.56-4.94a3.87 3.87 0 0 1 1.03-2.68 3.6 3.6 0 0 1 .1-2.64s.84-.27 2.75 1.02A9.47 9.47 0 0 1 12 5.99c.85 0 1.7.11 2.5.34 1.9-1.29 2.74-1.02 2.74-1.02.37.84.4 1.79.1 2.64a3.86 3.86 0 0 1 1.03 2.68c0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+      </svg>
+    )
+  }
+  {
+    icon === "linkedin" && (
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M5.6 8.9H2.4V21h3.2V8.9ZM4 3a1.85 1.85 0 1 0 0 3.7A1.85 1.85 0 0 0 4 3Zm17.6 11.1c0-3.25-1.73-4.76-4.04-4.76a3.48 3.48 0 0 0-3.17 1.74h-.04V8.9h-3.08V21h3.2v-5.98c0-1.58.3-3.1 2.25-3.1 1.92 0 1.95 1.8 1.95 3.2V21h3.2l-.27-6.9Z" />
+      </svg>
+    )
+  }
+  {
+    icon === "rss" && (
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M5 5c7.73 0 14 6.27 14 14" />
+        <path d="M5 12c3.87 0 7 3.13 7 7" />
+        <path d="M5 19h.01" />
+      </svg>
+    )
+  }
+</a>

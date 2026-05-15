@@ -1,39 +1,86 @@
 ---
+import ExternalIconLink from "../components/ExternalIconLink.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { formatDate } from "../lib/date";
-import { formatReadingTime } from "../lib/reading-time";
+import { formatDateDay, formatDateMonthYear } from "../lib/date";
 import { getPublishedPosts } from "../lib/posts";
+import {
+  AUTHOR_LINKS,
+  AUTHOR_NAME,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+  getCanonicalUrl,
+} from "../lib/site";
 
 const posts = await getPublishedPosts();
+const homeJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_TITLE,
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    inLanguage: "en",
+    author: {
+      "@type": "Person",
+      name: AUTHOR_NAME,
+      url: SITE_URL,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: AUTHOR_NAME,
+    url: SITE_URL,
+    sameAs: AUTHOR_LINKS,
+    description:
+      "Product-minded analyst writing about finance, technology, and product strategy.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Jiwen Song"
-  description="Product-minded analysis across markets, systems, and AI products."
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  canonicalUrl={getCanonicalUrl("/")}
+  jsonLd={homeJsonLd}
 >
   <section class="intro" aria-labelledby="site-title">
-    <p class="eyebrow">Signals / Systems / Products</p>
-    <h1 id="site-title">Jiwen Song</h1>
-    <p>
-      Product-minded analysis across markets, systems, and AI products, written
-      as a compact publication archive.
-    </p>
+    <div class="intro-copy">
+      <h1 id="site-title">Jiwen Song</h1>
+      <p>
+        Product-minded analysis across markets, systems, and AI products, written
+        as a compact publication archive.
+      </p>
+      <div class="external-links" aria-label="External links">
+        <ExternalIconLink href="https://github.com/JiwenS" label="GitHub profile" icon="github" />
+        <ExternalIconLink
+          href="https://www.linkedin.com/in/jiwensong/"
+          label="LinkedIn profile"
+          icon="linkedin"
+        />
+      </div>
+    </div>
+    <div class="avatar-placeholder" aria-hidden="true"></div>
   </section>
 
   <section class="post-list" aria-labelledby="latest-posts">
     <h2 id="latest-posts">Latest Posts</h2>
     {
       posts.map((post) => (
-        <article class="post-list-item">
-          <time datetime={post.data.publishedAt.toISOString()}>
-            {formatDate(post.data.publishedAt)}
+        <article
+          class="post-list-item"
+          style={`--color-theme: var(--theme-${post.data.themeColor});`}
+        >
+          <time class="post-date-stamp" datetime={post.data.publishedAt.toISOString()}>
+            <span class="post-date-day">{formatDateDay(post.data.publishedAt)}</span>
+            <span class="post-date-month">{formatDateMonthYear(post.data.publishedAt)}</span>
           </time>
           <div>
-            <h3>
+            <h3 transition:name={`post-title-${post.id}`}>
               <a href={`/post/${post.id}/`}>{post.data.title}</a>
             </h3>
             <p>{post.data.description}</p>
-            <p class="meta">{formatReadingTime(post.readingTimeMinutes)}</p>
           </div>
         </article>
       ))

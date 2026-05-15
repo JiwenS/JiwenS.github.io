@@ -38,3 +38,20 @@ export function getAdjacentPosts(posts: PostWithReadingTime[], currentId: string
   };
 }
 
+export function getRecommendedPosts(
+  posts: PostWithReadingTime[],
+  currentPost: PostWithReadingTime,
+): PostWithReadingTime[] {
+  const postById = new Map(posts.map((post) => [post.id, post]));
+  const recommendedPosts: PostWithReadingTime[] = [];
+
+  for (const postId of currentPost.data.recommendedPosts) {
+    const post = postById.get(postId);
+
+    if (post && post.id !== currentPost.id) {
+      recommendedPosts.push(post);
+    }
+  }
+
+  return recommendedPosts;
+}

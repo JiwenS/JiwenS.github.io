@@ -1,0 +1,27 @@
+---
+import type { PostWithReadingTime } from "../lib/posts";
+
+interface Props {
+  posts: PostWithReadingTime[];
+}
+
+const { posts } = Astro.props;
+---
+
+{
+  posts.length > 0 && (
+    <section class="post-recommendations" aria-labelledby="recommended-posts">
+      <h2 id="recommended-posts">You might also like</h2>
+      <div class="recommendation-list">
+        {posts.map((post) => (
+          <article>
+            <h3>
+              <a href={`/post/${post.id}/`}>{post.data.title}</a>
+            </h3>
+            <p>{post.data.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
