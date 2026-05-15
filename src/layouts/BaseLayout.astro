@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 import Seo from "../components/Seo.astro";
 import "../styles/global.css";
 
@@ -36,6 +37,7 @@ const { title, description, canonicalUrl, image, type, publishedAt, updatedAt, t
       tags={tags}
       jsonLd={jsonLd}
     />
+    <GoogleAnalytics />
     <ClientRouter fallback="animate" />
   </head>
   <body>

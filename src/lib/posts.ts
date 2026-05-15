@@ -29,7 +29,10 @@ export async function getPublishedPosts(): Promise<PostWithReadingTime[]> {
   return sortPostsByPublishedAtDesc(posts).map(withReadingTime);
 }
 
-export function getAdjacentPosts(posts: PostWithReadingTime[], currentId: string) {
+export function getAdjacentPosts(
+  posts: PostWithReadingTime[],
+  currentId: string,
+) {
   const index = posts.findIndex((post) => post.id === currentId);
 
   return {

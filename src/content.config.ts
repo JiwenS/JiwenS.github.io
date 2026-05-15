@@ -19,7 +19,10 @@ const kebabCaseTag = z
 
 const postSlug = z
   .string()
-  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Recommended posts must use kebab-case slugs.");
+  .regex(
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+    "Recommended posts must use kebab-case slugs.",
+  );
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),

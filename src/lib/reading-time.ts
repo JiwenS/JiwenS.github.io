@@ -13,4 +13,3 @@ export function getReadingTimeMinutes(body: string): number {
 export function formatReadingTime(minutes: number): string {
   return `${minutes} min read`;
 }
-

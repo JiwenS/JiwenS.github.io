@@ -117,16 +117,16 @@ const articleJsonLd = [
     <nav class="post-navigation" aria-label="Adjacent posts">
       {
         previousPost && (
-          <a href={`/post/${previousPost.id}/`}>
-            <span>Previous</span>
+          <a class="post-navigation-link previous-post-link" href={`/post/${previousPost.id}/`}>
+            <span>Previous Post</span>
             {previousPost.data.title}
           </a>
         )
       }
       {
         nextPost && (
-          <a href={`/post/${nextPost.id}/`}>
-            <span>Next</span>
+          <a class="post-navigation-link next-post-link" href={`/post/${nextPost.id}/`}>
+            <span>Next Post</span>
             {nextPost.data.title}
           </a>
         )
