@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { formatDate } from "../lib/date";
+import { formatReadingTime } from "../lib/reading-time";
+import { getPublishedPosts } from "../lib/posts";
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout
+  title="Jiwen Song"
+  description="Product-minded analysis across markets, systems, and AI products."
+>
+  <section class="intro" aria-labelledby="site-title">
+    <p class="eyebrow">Signals / Systems / Products</p>
+    <h1 id="site-title">Jiwen Song</h1>
+    <p>
+      Product-minded analysis across markets, systems, and AI products, written
+      as a compact publication archive.
+    </p>
+  </section>
+
+  <section class="post-list" aria-labelledby="latest-posts">
+    <h2 id="latest-posts">Latest Posts</h2>
+    {
+      posts.map((post) => (
+        <article class="post-list-item">
+          <time datetime={post.data.publishedAt.toISOString()}>
+            {formatDate(post.data.publishedAt)}
+          </time>
+          <div>
+            <h3>
+              <a href={`/post/${post.id}/`}>{post.data.title}</a>
+            </h3>
+            <p>{post.data.description}</p>
+            <p class="meta">{formatReadingTime(post.readingTimeMinutes)}</p>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>
+

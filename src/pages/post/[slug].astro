@@ -1,0 +1,70 @@
+---
+import { render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatDate } from "../../lib/date";
+import { formatReadingTime } from "../../lib/reading-time";
+import { getAdjacentPosts, getPublishedPosts } from "../../lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, posts },
+  }));
+}
+
+const { post, posts } = Astro.props;
+const { Content } = await render(post);
+const { previousPost, nextPost } = getAdjacentPosts(posts, post.id);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="post-detail" style={`--color-theme: var(--theme-${post.data.themeColor});`}>
+    <a class="back-link" href="/">Back home</a>
+
+    <header class="post-header">
+      <ul class="tags" aria-label="Post tags">
+        {post.data.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+      <h1>{post.data.title}</h1>
+      <p class="dek">{post.data.subtitle || post.data.description}</p>
+      <p class="meta">
+        By Jiwen Song · Published <time datetime={post.data.publishedAt.toISOString()}>{formatDate(post.data.publishedAt)}</time>
+        {
+          post.data.updatedAt.getTime() !== post.data.publishedAt.getTime() && (
+            <>
+              {" "}
+              · Updated <time datetime={post.data.updatedAt.toISOString()}>{formatDate(post.data.updatedAt)}</time>
+            </>
+          )
+        }
+        {" "}· {formatReadingTime(post.readingTimeMinutes)}
+      </p>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <nav class="post-navigation" aria-label="Adjacent posts">
+      {
+        previousPost && (
+          <a href={`/post/${previousPost.id}/`}>
+            <span>Previous</span>
+            {previousPost.data.title}
+          </a>
+        )
+      }
+      {
+        nextPost && (
+          <a href={`/post/${nextPost.id}/`}>
+            <span>Next</span>
+            {nextPost.data.title}
+          </a>
+        )
+      }
+    </nav>
+  </article>
+</BaseLayout>
+
