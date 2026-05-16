@@ -6,6 +6,7 @@ import { getPublishedPosts } from "../lib/posts";
 import {
   AUTHOR_LINKS,
   AUTHOR_NAME,
+  AUTHOR_SUMMARY,
   SITE_DESCRIPTION,
   SITE_TITLE,
   SITE_URL,
@@ -33,8 +34,7 @@ const homeJsonLd = [
     name: AUTHOR_NAME,
     url: SITE_URL,
     sameAs: AUTHOR_LINKS,
-    description:
-      "Product-minded analyst writing about finance, technology, and product strategy.",
+    description: AUTHOR_SUMMARY,
   },
 ];
 ---
@@ -49,10 +49,28 @@ const homeJsonLd = [
     <div class="intro-copy">
       <h1 id="site-title">Jiwen Song</h1>
       <p>
-        Product-minded analysis across markets, systems, and AI products, written
-        as a compact publication archive.
+        Hey, I'm Jiwen. I spent the past few years working on brokerage clearing
+        infrastructure on Wall Street. My work has lived somewhere between
+        product design, operational systems, and the financial plumbing most
+        users never see.
       </p>
-      <div class="external-links" aria-label="External links">
+      <p>
+        I'm especially interested in how AI changes workflows, interfaces, and
+        decision systems, not just demos. A lot of the systems that run modern
+        businesses were built long before AI-native workflows existed. That shift
+        feels worth paying attention to.
+      </p>
+      <p>
+        Some posts in this space are original essays. Some are observations from
+        industry experience. Some are simply ideas worth thinking about.
+      </p>
+      <p>
+        Still learning. Still building. Still exploring what comes next.
+      </p>
+    </div>
+    <aside class="intro-profile" aria-label="Profile links">
+      <div class="avatar-placeholder" aria-hidden="true"></div>
+      <div class="external-links">
         <ExternalIconLink href="https://github.com/JiwenS" label="GitHub profile" icon="github" />
         <ExternalIconLink
           href="https://www.linkedin.com/in/jiwensong/"
@@ -60,8 +78,7 @@ const homeJsonLd = [
           icon="linkedin"
         />
       </div>
-    </div>
-    <div class="avatar-placeholder" aria-hidden="true"></div>
+    </aside>
   </section>
 
   <section class="post-list" aria-labelledby="latest-posts">
