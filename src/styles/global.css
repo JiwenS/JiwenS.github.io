@@ -245,24 +245,27 @@ h2 {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 6px 0;
+  align-items: baseline;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   list-style: none;
 }
 
 .tags li {
-  padding: 3px 10px;
-  border: 1px solid
-    color-mix(in srgb, var(--color-theme) 36%, var(--color-rule));
-  border-radius: 999px;
-  color: var(--color-theme);
-  font-size: 0.82rem;
-  line-height: 1.35;
-  transition:
-    border-color 160ms ease,
-    color 160ms ease,
-    background-color 160ms ease;
+  display: inline-flex;
+  align-items: baseline;
+  color: color-mix(in srgb, var(--color-muted-ink) 86%, var(--color-theme));
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.4;
+  transition: color 160ms ease;
+}
+
+.tags li:not(:last-child)::after {
+  margin: 0 0.62em;
+  color: color-mix(in srgb, var(--color-muted-ink) 64%, var(--color-rule));
+  content: "·";
 }
 
 .post-detail h1 {

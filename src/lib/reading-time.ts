@@ -1,4 +1,4 @@
-const WORDS_PER_MINUTE = 225;
+const WORDS_PER_MINUTE = 180;
 
 export function getReadingTimeMinutes(body: string): number {
   const words = body
