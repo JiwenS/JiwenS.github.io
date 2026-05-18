@@ -1,7 +1,7 @@
 # Development Workflow
 
-Version: v0.2.0
-Last Updated: 2026-05-15
+Version: v0.4.0
+Last Updated: 2026-05-17
 Owner: Human project owner
 Status: Draft
 
@@ -99,16 +99,42 @@ Do not add a decision record for routine implementation details that do not crea
 
 ## Content Publishing Workflow
 
+All article ideas start in `src/content/drafts/` as plain Markdown unless there is a clear reason to draft directly in MDX.
+
 For a new post:
 
-1. Create the Markdown / MDX post as draft.
-2. Fill required frontmatter.
-3. Add tags for future indexing.
-4. Select `themeColor` from approved tokens when needed.
-5. Ensure the written body is meaningful and text-first.
-6. Add optional images, YouTube embeds, audio, charts, references, or transcripts.
-7. Verify title, description, canonical behavior, and social metadata.
-8. Remove draft status only when ready to publish.
+1. Create or update a plain Markdown draft in `src/content/drafts/`.
+2. Run an editorial review before publication. The review must cover quality, structure, clarity, originality, credibility, audience fit, distribution potential, SEO/GEO readiness, and multimedia opportunities.
+3. Record concrete revision notes next to the draft in `src/content/drafts/`, using a review file such as `<draft-name>.review.md`.
+4. Revise the draft until the main issues from the review are addressed.
+5. Stop for HITL confirmation. Do not move the article into `src/content/posts/` before the human owner approves the reviewed draft for publication.
+6. After HITL approval, render the draft into a publishable Markdown / MDX post in `src/content/posts/`.
+7. Fill required frontmatter.
+8. Check the approved tag library in `docs/engineering/conventions.md` and `src/content.config.ts`.
+9. Reuse an approved tag when one fits. Use `notes` for general personal notes and reflection posts.
+10. If no approved tag fits, stop for HITL confirmation before adding a new tag. After approval, add the tag to the documented tag library and the `approvedPostTags` schema in `src/content.config.ts`.
+11. Select `themeColor` from approved tokens when needed.
+12. Ensure the written body is meaningful and text-first.
+13. Add optional images, YouTube embeds, audio, charts, references, or transcripts only when they improve the article. Rich media must have surrounding text context and accessible alt text or captions.
+14. Verify title, description, canonical behavior, social metadata, and structured data behavior.
+15. Publish with `draft: false` only after HITL approval and successful checks.
+16. After the post has been rendered into `src/content/posts/`, remove the local source draft and local review file from `src/content/drafts/`.
+
+The `src/content/drafts/` directory is gitignored. Drafts and review notes are local working material and must not be committed or published to the repository.
+
+### Editorial Review Dimensions
+
+Before HITL approval, evaluate each draft on:
+
+- Quality: the core idea is worth publishing and avoids filler.
+- Structure: the article has a clear opening, logical progression, and intentional ending.
+- Clarity: sentences are understandable, claims are specific, and jargon is limited or explained.
+- Originality: the piece reflects a distinct point of view or lived experience.
+- Credibility: factual claims are supportable, sourced when needed, and not overstated.
+- Audience fit: the article fits the blog's finance, product, AI, systems, or personal-reflection direction.
+- Distribution potential: the title, hook, excerpt, and shareable takeaway are easy to communicate.
+- SEO/GEO readiness: metadata can summarize the article accurately, headings are crawlable, and references are descriptive.
+- Multimedia readiness: any image, video, audio, chart, or transcript addition strengthens the text-first article rather than replacing it.
 
 ## Deployment Workflow
 

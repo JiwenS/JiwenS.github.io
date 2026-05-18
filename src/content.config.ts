@@ -13,9 +13,14 @@ const themeColor = z.enum([
   "slate-teal",
 ]);
 
-const kebabCaseTag = z
-  .string()
-  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Tags must be lowercase kebab-case.");
+const approvedPostTags = ["notes"] as const;
+
+const postTag = z.enum(approvedPostTags, {
+  errorMap: () => ({
+    message:
+      "Tags must come from the approved tag library. Add a new tag only after HITL approval.",
+  }),
+});
 
 const postSlug = z
   .string()
@@ -32,7 +37,7 @@ const posts = defineCollection({
     subtitle: z.string().min(1),
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date(),
-    tags: z.array(kebabCaseTag),
+    tags: z.array(postTag).min(1),
     heroImage: z.string(),
     heroAlt: z.string(),
     themeColor,

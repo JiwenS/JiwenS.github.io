@@ -1,7 +1,7 @@
 # Engineering Conventions
 
-Version: v0.1.0
-Last Updated: 2026-05-15
+Version: v0.3.0
+Last Updated: 2026-05-17
 Owner: Human project owner
 Status: Draft
 
@@ -19,6 +19,7 @@ Recommended Astro structure:
 src/
 +-- components/
 +-- content/
+|   +-- drafts/
 |   +-- posts/
 +-- layouts/
 +-- lib/
@@ -32,7 +33,8 @@ docs/
 
 Conventions:
 
-- `src/content/posts/` stores Markdown / MDX posts.
+- `src/content/drafts/` stores unpublished local working drafts and review notes before editorial review and HITL approval. This directory is gitignored and must not be committed.
+- `src/content/posts/` stores reviewed Markdown / MDX posts that are ready for the Astro content collection.
 - `src/layouts/` stores page-level layouts.
 - `src/components/` stores reusable UI components.
 - `src/lib/` stores utility functions such as reading time, date formatting, and SEO helpers.
@@ -47,6 +49,7 @@ Files:
 - Layouts: `PascalCase.astro`
 - Utility files: `kebab-case.ts`
 - Content slugs: `kebab-case.mdx`
+- Draft filenames: human-readable Markdown names are acceptable while drafting; convert to kebab-case when publishing.
 - CSS files: `kebab-case.css`
 
 Examples:
@@ -58,6 +61,8 @@ Examples:
 - `farewell-rust.mdx`
 
 ## Content Frontmatter
+
+Plain Markdown drafts in `src/content/drafts/` do not need frontmatter. Draft review files should live beside their source drafts and use a suffix such as `.review.md`. Publishable posts in `src/content/posts/` must include frontmatter.
 
 Required post frontmatter:
 
@@ -83,33 +88,39 @@ Rules:
 - `description` must work as SEO meta description.
 - `publishedAt` controls homepage ordering.
 - `updatedAt` is required when the article has meaningful updates.
-- `tags` are lowercase kebab-case strings.
+- `tags` must come from the approved tag library.
 - `themeColor` must use an approved token unless a future decision allows arbitrary values.
 - `draft: true` posts must not be publicly rendered.
 
 ## Tag Convention
 
-Tags should be:
+Tags are intentionally limited to a small approved library so posts remain easy to organize.
+
+Approved tags:
+
+- `notes`: General personal notes, reflections, launch posts, and essays that do not yet require a more specific recurring category.
+
+Rules:
 
 - Lowercase.
 - Kebab-case.
 - Reusable.
 - Specific enough to aid future indexing.
 - Not used as first-version navigation.
-
-Good examples:
-
-- `fintech`
-- `ai-products`
-- `market-structure`
-- `product-strategy`
-- `developer-tools`
+- Defined in both this document and `approvedPostTags` in `src/content.config.ts`.
 
 Avoid:
 
 - One-off sentence-like tags.
 - Duplicates with different spelling.
 - Tags used only for decoration.
+
+Before publishing a post:
+
+1. Check whether the article fits an approved tag.
+2. Reuse the existing tag if it fits.
+3. If no approved tag fits, stop for HITL confirmation.
+4. After HITL approval, add the new tag to this library and to `approvedPostTags` in `src/content.config.ts`.
 
 ## Theme Color Convention
 
