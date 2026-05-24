@@ -13,7 +13,7 @@ const themeColor = z.enum([
   "slate-teal",
 ]);
 
-const approvedPostTags = ["notes"] as const;
+const approvedPostTags = ["notes", "clearing", "settlement", "ipo"] as const;
 
 const postTag = z.enum(approvedPostTags, {
   errorMap: () => ({

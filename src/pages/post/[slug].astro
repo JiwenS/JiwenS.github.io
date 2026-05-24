@@ -21,10 +21,14 @@ const { Content } = await render(post);
 const { previousPost, nextPost } = getAdjacentPosts(posts, post.id);
 const recommendedPosts = getRecommendedPosts(posts, post);
 const canonicalUrl = post.data.canonicalUrl || getCanonicalUrl(`/post/${post.id}/`);
+const uppercaseTagLabels: Record<string, string> = {
+  ai: "AI",
+  ipo: "IPO",
+};
 const formatTagLabel = (tag: string) =>
   tag
     .split("-")
-    .map((part) => (part === "ai" ? "AI" : part.charAt(0).toUpperCase() + part.slice(1)))
+    .map((part) => uppercaseTagLabels[part] ?? part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
 const articleJsonLd = [
   {

@@ -99,6 +99,9 @@ Tags are intentionally limited to a small approved library so posts remain easy 
 Approved tags:
 
 - `notes`: General personal notes, reflections, launch posts, and essays that do not yet require a more specific recurring category.
+- `clearing`: Clearing broker operations, brokerage infrastructure, post-trade workflows, and market plumbing.
+- `settlement`: Securities settlement, custody, reconciliation, DTC / DTCC workflows, and ownership-record mechanics.
+- `ipo`: IPO process explainers, primary-market structure, allocation, prospectus, and listing-related analysis.
 
 Rules:
 

@@ -118,7 +118,9 @@ For a new post:
 13. Add optional images, YouTube embeds, audio, charts, references, or transcripts only when they improve the article. Rich media must have surrounding text context and accessible alt text or captions.
 14. Verify title, description, canonical behavior, social metadata, and structured data behavior.
 15. Publish with `draft: false` only after HITL approval and successful checks.
-16. After the post has been rendered into `src/content/posts/`, remove the local source draft and local review file from `src/content/drafts/`.
+16. After the post enters `src/content/posts/`, keep the draft and review file until the post has been preview-reviewed. Some issues, such as image balance, media sizing, link density, layout rhythm, or visual hierarchy, may only become clear after rendering the post page.
+17. If post-preview review finds issues, treat the article as temporarily returned to the draft/review loop. Update the review file with the new findings, update the Markdown draft in `src/content/drafts/`, and update the publishable Markdown / MDX file in `src/content/posts/` so local preview reflects the latest revision.
+18. After the post is approved in rendered preview and the final `src/content/posts/` version is stable, remove the local source draft and local review file from `src/content/drafts/`.
 
 The `src/content/drafts/` directory is gitignored. Drafts and review notes are local working material and must not be committed or published to the repository.
 
@@ -126,15 +128,16 @@ The `src/content/drafts/` directory is gitignored. Drafts and review notes are l
 
 Before HITL approval, evaluate each draft on:
 
+- Reader goal: for public explanatory posts, prioritize understandability, shareability, and reader confidence for general and semi-professional readers. Reviews should not push the draft toward specialist handbook precision unless the article's promise requires it. Technical simplification is acceptable when it improves comprehension and does not create a materially misleading claim.
 - Quality: the core idea is worth publishing and avoids filler.
 - Structure: the article has a clear opening, logical progression, and intentional ending.
-- Clarity: sentences are understandable, claims are specific, and jargon is limited or explained.
+- Clarity: sentences are understandable, claims are concrete enough to be useful, and jargon is limited, translated, or explained through examples.
 - Originality: the piece reflects a distinct point of view or lived experience.
-- Credibility: factual claims are supportable, sourced when needed, and not overstated.
-- Audience fit: the article fits the blog's finance, product, AI, systems, or personal-reflection direction.
+- Credibility: factual claims are supportable, sourced when needed, and not overstated. Credibility should serve trust with the target reader, not turn every explanation into a compliance or operations manual.
+- Audience fit: the article fits the blog's finance, product, AI, systems, or personal-reflection direction and speaks to smart general readers or semi-professional readers, not only deep domain specialists.
 - Distribution potential: the title, hook, excerpt, and shareable takeaway are easy to communicate.
 - SEO/GEO readiness: metadata can summarize the article accurately, headings are crawlable, and references are descriptive.
-- Multimedia readiness: any image, video, audio, chart, or transcript addition strengthens the text-first article rather than replacing it.
+- Multimedia readiness: any image, video, audio, chart, or transcript addition strengthens the text-first article rather than replacing it. When a review recommends existing media, it must include the source or reference URL and note any attribution / licensing concern that needs human review. When a review recommends making a custom image, chart, diagram, or generated visual, it must include a concrete production brief or image-generation prompt, plus the intended alt text.
 
 ## Deployment Workflow
 

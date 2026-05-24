@@ -46,6 +46,214 @@ const { title, description, canonicalUrl, image, type, publishedAt, updatedAt, t
     <main>
       <slot />
     </main>
+    <script is:inline>
+      (() => {
+        if (window.__imageLightboxInitialized) return;
+        window.__imageLightboxInitialized = true;
+
+        const zoomableSelector = ".prose img:not([data-no-zoom])";
+        let lightbox;
+        let lightboxImage;
+        let previouslyFocused;
+        let scale = 1;
+        let translateX = 0;
+        let translateY = 0;
+        let pointerStart;
+        let touchStartDistance = 0;
+        let touchStartScale = 1;
+        let wasMoved = false;
+
+        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+        const updateTransform = () => {
+          lightboxImage.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+          lightboxImage.dataset.zoomed = scale > 1.01 ? "true" : "false";
+        };
+
+        const resetTransform = () => {
+          scale = 1;
+          translateX = 0;
+          translateY = 0;
+          pointerStart = undefined;
+          touchStartDistance = 0;
+          touchStartScale = 1;
+          wasMoved = false;
+          updateTransform();
+        };
+
+        const distanceBetweenTouches = (touches) => {
+          const [first, second] = touches;
+          return Math.hypot(first.clientX - second.clientX, first.clientY - second.clientY);
+        };
+
+        const ensureLightbox = () => {
+          if (lightbox) return;
+
+          lightbox = document.createElement("div");
+          lightbox.className = "image-lightbox";
+          lightbox.setAttribute("role", "dialog");
+          lightbox.setAttribute("aria-modal", "true");
+          lightbox.setAttribute("aria-hidden", "true");
+          lightbox.setAttribute("aria-label", "Enlarged image viewer");
+          lightbox.innerHTML = `
+            <img class="image-lightbox-image" alt="" tabindex="-1" />
+          `;
+
+          document.body.append(lightbox);
+          lightboxImage = lightbox.querySelector(".image-lightbox-image");
+
+          lightbox.addEventListener("click", () => {
+            if (!wasMoved) closeLightbox();
+            wasMoved = false;
+          });
+
+          lightbox.addEventListener(
+            "wheel",
+            (event) => {
+              event.preventDefault();
+              const previousScale = scale;
+              const zoomDelta = event.deltaY < 0 ? 0.18 : -0.18;
+              scale = clamp(scale + zoomDelta, 1, 4);
+
+              if (scale === 1) {
+                translateX = 0;
+                translateY = 0;
+              } else {
+                const scaleRatio = scale / previousScale;
+                translateX *= scaleRatio;
+                translateY *= scaleRatio;
+              }
+
+              updateTransform();
+            },
+            { passive: false },
+          );
+
+          lightboxImage.addEventListener("pointerdown", (event) => {
+            if (scale <= 1.01) return;
+            pointerStart = {
+              pointerId: event.pointerId,
+              x: event.clientX,
+              y: event.clientY,
+              translateX,
+              translateY,
+            };
+            lightboxImage.setPointerCapture(event.pointerId);
+          });
+
+          lightboxImage.addEventListener("pointermove", (event) => {
+            if (!pointerStart || pointerStart.pointerId !== event.pointerId) return;
+
+            const deltaX = event.clientX - pointerStart.x;
+            const deltaY = event.clientY - pointerStart.y;
+            if (Math.abs(deltaX) > 4 || Math.abs(deltaY) > 4) {
+              wasMoved = true;
+            }
+            translateX = pointerStart.translateX + deltaX;
+            translateY = pointerStart.translateY + deltaY;
+            updateTransform();
+          });
+
+          lightboxImage.addEventListener("pointerup", (event) => {
+            if (pointerStart?.pointerId === event.pointerId) {
+              pointerStart = undefined;
+            }
+          });
+
+          lightboxImage.addEventListener("touchstart", (event) => {
+            if (event.touches.length === 2) {
+              touchStartDistance = distanceBetweenTouches(event.touches);
+              touchStartScale = scale;
+            }
+          });
+
+          lightboxImage.addEventListener(
+            "touchmove",
+            (event) => {
+              if (event.touches.length !== 2 || !touchStartDistance) return;
+              event.preventDefault();
+              const nextDistance = distanceBetweenTouches(event.touches);
+              scale = clamp(touchStartScale * (nextDistance / touchStartDistance), 1, 4);
+              if (scale === 1) {
+                translateX = 0;
+                translateY = 0;
+              }
+              wasMoved = true;
+              updateTransform();
+            },
+            { passive: false },
+          );
+
+          lightboxImage.addEventListener("touchend", () => {
+            if (scale <= 1.01) {
+              translateX = 0;
+              translateY = 0;
+              updateTransform();
+            }
+            touchStartDistance = 0;
+          });
+        };
+
+        const openLightbox = (image) => {
+          ensureLightbox();
+          previouslyFocused = document.activeElement;
+          lightboxImage.src = image.currentSrc || image.src;
+          lightboxImage.alt = image.alt || "";
+          resetTransform();
+
+          lightbox.classList.add("is-open");
+          lightbox.setAttribute("aria-hidden", "false");
+          document.body.classList.add("image-lightbox-open");
+          lightboxImage.focus();
+        };
+
+        const closeLightbox = () => {
+          if (!lightbox?.classList.contains("is-open")) return;
+
+          lightbox.classList.remove("is-open");
+          lightbox.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("image-lightbox-open");
+          lightboxImage.removeAttribute("src");
+          resetTransform();
+
+          if (previouslyFocused instanceof HTMLElement) {
+            previouslyFocused.focus();
+          }
+        };
+
+        const enhanceImages = () => {
+          document.querySelectorAll(zoomableSelector).forEach((image) => {
+            image.dataset.zoomable = "true";
+            image.setAttribute("role", "button");
+            image.setAttribute("tabindex", "0");
+            image.setAttribute("aria-label", "Open enlarged image");
+          });
+        };
+
+        document.addEventListener("click", (event) => {
+          const image = event.target.closest?.(zoomableSelector);
+          if (image) {
+            openLightbox(image);
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeLightbox();
+            return;
+          }
+
+          const image = event.target.closest?.(zoomableSelector);
+          if (image && (event.key === "Enter" || event.key === " ")) {
+            event.preventDefault();
+            openLightbox(image);
+          }
+        });
+
+        document.addEventListener("DOMContentLoaded", enhanceImages);
+        document.addEventListener("astro:page-load", enhanceImages);
+      })();
+    </script>
   </body>
 </html>
 

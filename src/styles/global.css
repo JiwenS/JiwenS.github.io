@@ -306,6 +306,93 @@ h2 {
   border-top: 1px solid var(--color-rule);
 }
 
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.prose img[data-zoomable="true"] {
+  cursor: zoom-in;
+}
+
+.prose img[data-zoomable="true"]:focus-visible {
+  outline: 2px solid var(--color-theme);
+  outline-offset: 4px;
+}
+
+.article-figure {
+  margin: 40px auto;
+}
+
+.article-figure img {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--color-rule) 82%, transparent);
+  background: color-mix(in srgb, var(--color-paper) 84%, white);
+}
+
+.article-figure--primary {
+  max-width: 680px;
+}
+
+.article-figure--compact {
+  max-width: 620px;
+}
+
+.article-figure figcaption {
+  margin-top: 10px;
+  color: var(--color-muted-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.image-lightbox-open {
+  overflow: hidden;
+}
+
+.image-lightbox {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background: color-mix(in srgb, var(--color-deep-ink) 72%, transparent);
+  cursor: zoom-out;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+  touch-action: none;
+}
+
+.image-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-lightbox-image {
+  max-width: 100%;
+  max-height: min(88vh, 920px);
+  border: 1px solid color-mix(in srgb, var(--color-rule) 70%, transparent);
+  background: var(--color-paper);
+  cursor: zoom-out;
+  object-fit: contain;
+  box-shadow: 0 18px 60px color-mix(in srgb, black 34%, transparent);
+  transform-origin: center;
+  transition: transform 80ms ease-out;
+  touch-action: none;
+  user-select: none;
+}
+
+.image-lightbox-image[data-zoomed="true"] {
+  cursor: grab;
+}
+
+.image-lightbox-image[data-zoomed="true"]:active {
+  cursor: grabbing;
+}
+
 .post-navigation {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
