@@ -1,3 +1,7 @@
+<p align="right">
+  <a href="../README.md">English</a> · <strong>中文</strong>
+</p>
+
 # JiwenS.github.io
 
 [![Deploy to GitHub Pages](https://github.com/JiwenS/JiwenS.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/JiwenS/JiwenS.github.io/actions/workflows/deploy.yml)
@@ -5,8 +9,6 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
 ![MDX](https://img.shields.io/badge/Content-MDX-1B1F24)
 ![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-222222?logo=githubpages&logoColor=white)
-
-[English README](README.en.md)
 
 ## 项目概览
 
