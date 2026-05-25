@@ -1,7 +1,7 @@
 # Development Workflow
 
-Version: v0.4.0
-Last Updated: 2026-05-17
+Version: v0.5.0
+Last Updated: 2026-05-25
 Owner: Human project owner
 Status: Draft
 
@@ -131,13 +131,17 @@ Before HITL approval, evaluate each draft on:
 - Reader goal: for public explanatory posts, prioritize understandability, shareability, and reader confidence for general and semi-professional readers. Reviews should not push the draft toward specialist handbook precision unless the article's promise requires it. Technical simplification is acceptable when it improves comprehension and does not create a materially misleading claim.
 - Quality: the core idea is worth publishing and avoids filler.
 - Structure: the article has a clear opening, logical progression, and intentional ending.
+- Structural balance: the article does not feel top-heavy, bottom-heavy, or under-concluded. Section length, detail level, and evidence density should match the article's promise. If the ending introduces the real thesis, either move that thesis earlier or expand the body so the ending feels earned.
 - Clarity: sentences are understandable, claims are concrete enough to be useful, and jargon is limited, translated, or explained through examples.
+- Detail density: important claims are supported by concrete examples, workflows, artifacts, screenshots, diagrams, source links, or before/after contrasts when those details would help the reader understand or trust the argument.
+- Practical specificity: the reader can identify what to do, what to avoid, or what mental model to reuse after reading. Generic advice should be revised into project-specific observations or removed.
 - Originality: the piece reflects a distinct point of view or lived experience.
 - Credibility: factual claims are supportable, sourced when needed, and not overstated. Credibility should serve trust with the target reader, not turn every explanation into a compliance or operations manual.
 - Audience fit: the article fits the blog's finance, product, AI, systems, or personal-reflection direction and speaks to smart general readers or semi-professional readers, not only deep domain specialists.
 - Distribution potential: the title, hook, excerpt, and shareable takeaway are easy to communicate.
 - SEO/GEO readiness: metadata can summarize the article accurately, headings are crawlable, and references are descriptive.
 - Multimedia readiness: any image, video, audio, chart, or transcript addition strengthens the text-first article rather than replacing it. When a review recommends existing media, it must include the source or reference URL and note any attribution / licensing concern that needs human review. When a review recommends making a custom image, chart, diagram, or generated visual, it must include a concrete production brief or image-generation prompt, plus the intended alt text.
+- Visual explanation fit: reviews should actively identify whether a custom diagram, annotated screenshot, process map, comparison table, or simple chart would reduce cognitive load. Do not add media for decoration; recommend it when the article explains a workflow, hierarchy, system map, timeline, or before/after process that is harder to parse in prose alone.
 
 ## Deployment Workflow
 

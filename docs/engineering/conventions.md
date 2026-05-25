@@ -1,7 +1,7 @@
 # Engineering Conventions
 
-Version: v0.3.0
-Last Updated: 2026-05-17
+Version: v0.5.0
+Last Updated: 2026-05-25
 Owner: Human project owner
 Status: Draft
 
@@ -102,6 +102,7 @@ Approved tags:
 - `clearing`: Clearing broker operations, brokerage infrastructure, post-trade workflows, and market plumbing.
 - `settlement`: Securities settlement, custody, reconciliation, DTC / DTCC workflows, and ownership-record mechanics.
 - `ipo`: IPO process explainers, primary-market structure, allocation, prospectus, and listing-related analysis.
+- `ai-agent`: AI agent workflows, agent-assisted development, prompt-to-code systems, harness engineering, and human-in-the-loop operating patterns.
 
 Rules:
 
@@ -168,6 +169,7 @@ Rules:
 - Prefer layout primitives over nested card structures.
 - Do not introduce decorative gradient blobs, particles, or animated backgrounds.
 - Use stable dimensions for dates, embeds, and media.
+- Render Markdown / MDX fenced code blocks as editorial code blocks with a visible language label and copy control. Code block panels may use a restrained dark editor-style background for contrast inside light article pages, but this is a local code-reading component treatment, not a separate site-wide dark theme.
 
 ## Component Convention
 
