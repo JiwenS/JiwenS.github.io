@@ -1,7 +1,7 @@
 # Architecture
 
-Version: v0.4.0
-Last Updated: 2026-05-14
+Version: v0.5.0
+Last Updated: 2026-05-25
 Owner: Human project owner
 Status: Draft
 
@@ -33,7 +33,8 @@ Implementation implications:
 - Use GitHub Actions to build and publish the generated static output.
 - Configure Astro `site` and `base` correctly for the chosen GitHub Pages URL.
 - Build output should be treated as generated deployment output, not the source of truth.
-- The repository should keep source content, templates, components, styles, and documentation under version control.
+- The repository should keep editorial source content, templates, components, styles, and documentation under version control.
+- Editorial source content should live in the root `content/` directory so article work is separated from application source code in `src/`.
 
 ## Content Model
 

@@ -29,11 +29,11 @@
 ```text
 src/
   components/      可复用 Astro 组件
-  content/posts/   MDX 文章
   layouts/         页面布局
   lib/             工具函数与站点配置
   pages/           页面路由与静态端点
   styles/          全局样式
+content/posts/     MDX 文章
 public/            原样复制的静态资源
 docs/              产品、设计与工程文档
 .github/workflows/ GitHub Pages 部署流程
@@ -58,7 +58,7 @@ npm run preview
 
 ## 写作与发布文章
 
-文章存放在 `src/content/posts/`。
+文章存放在 `content/posts/`。
 
 必填 frontmatter：
 

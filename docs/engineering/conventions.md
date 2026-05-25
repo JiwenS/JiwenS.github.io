@@ -1,6 +1,6 @@
 # Engineering Conventions
 
-Version: v0.5.0
+Version: v0.6.0
 Last Updated: 2026-05-25
 Owner: Human project owner
 Status: Draft
@@ -18,13 +18,13 @@ Recommended Astro structure:
 ```text
 src/
 +-- components/
-+-- content/
-|   +-- drafts/
-|   +-- posts/
 +-- layouts/
 +-- lib/
 +-- pages/
 +-- styles/
+content/
++-- drafts/
++-- posts/
 public/
 +-- assets/
 +-- robots.txt
@@ -33,8 +33,8 @@ docs/
 
 Conventions:
 
-- `src/content/drafts/` stores unpublished local working drafts and review notes before editorial review and HITL approval. This directory is gitignored and must not be committed.
-- `src/content/posts/` stores reviewed Markdown / MDX posts that are ready for the Astro content collection.
+- `content/drafts/` stores unpublished local working drafts and review notes before editorial review and HITL approval. This directory is gitignored and must not be committed.
+- `content/posts/` stores reviewed Markdown / MDX posts that are ready for the Astro content collection.
 - `src/layouts/` stores page-level layouts.
 - `src/components/` stores reusable UI components.
 - `src/lib/` stores utility functions such as reading time, date formatting, and SEO helpers.
@@ -62,7 +62,7 @@ Examples:
 
 ## Content Frontmatter
 
-Plain Markdown drafts in `src/content/drafts/` do not need frontmatter. Draft review files should live beside their source drafts and use a suffix such as `.review.md`. Publishable posts in `src/content/posts/` must include frontmatter.
+Plain Markdown drafts in `content/drafts/` do not need frontmatter. Draft review files should live beside their source drafts and use a suffix such as `.review.md`. Publishable posts in `content/posts/` must include frontmatter.
 
 Required post frontmatter:
 

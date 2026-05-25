@@ -29,11 +29,11 @@ This site is a static editorial blog focused on finance, technology, AI products
 ```text
 src/
   components/      Reusable Astro components
-  content/posts/   MDX posts
   layouts/         Shared page layouts
   lib/             Utilities and site config
   pages/           Routes and static endpoints
   styles/          Global CSS
+content/posts/     MDX posts
 public/            Static assets copied as-is
 docs/              Product, design, and engineering docs
 .github/workflows/ GitHub Pages deployment workflow
@@ -58,7 +58,7 @@ npm run preview
 
 ## Writing Posts
 
-Posts live in `src/content/posts/`.
+Posts live in `content/posts/`.
 
 Required frontmatter:
 
