@@ -1,7 +1,7 @@
 # Brand Positioning
 
-Version: v0.1.0
-Last Updated: 2026-05-14
+Version: v0.2.0
+Last Updated: 2026-05-25
 Owner: Human project owner
 Status: Draft
 
@@ -68,3 +68,9 @@ The first screen should quickly communicate:
 - Where readers should start reading.
 
 The homepage should make the Product-Minded Analyst identity visible through headline, tagline, navigation, and featured content taxonomy.
+
+The homepage may include a hard-coded identity subline near the owner name to help readers quickly classify the owner's background and point of view. This subline is separate from article tags and should not behave as taxonomy navigation in the first version.
+
+Approved homepage identity subline:
+
+Product-minded notes on financial systems, AI workflows, and technology shifts.

@@ -109,6 +109,15 @@ h2 {
   line-height: 1.65;
 }
 
+.identity-subline {
+  max-width: 640px;
+  margin: -4px 0 24px;
+  color: color-mix(in srgb, var(--color-muted-ink) 88%, var(--color-theme));
+  font-size: 1.04rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
 .avatar-placeholder {
   width: 128px;
   height: 128px;

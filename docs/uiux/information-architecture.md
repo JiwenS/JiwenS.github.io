@@ -1,7 +1,7 @@
 # Information Architecture
 
-Version: v0.3.0
-Last Updated: 2026-05-14
+Version: v0.4.0
+Last Updated: 2026-05-25
 Owner: Human project owner
 Status: Draft
 
@@ -43,6 +43,8 @@ Homepage content order:
 1. Concise about / identity section.
 2. Latest posts list.
 3. Footer or quiet external links.
+
+The identity section may include a non-clickable editorial subline below the owner name. It should describe the owner and publication viewpoint in sentence form, not as article categories. It should remain visually quiet and distinct from post tags.
 
 ## Navigation
 
