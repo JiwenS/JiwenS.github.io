@@ -1,0 +1,177 @@
+---
+title: "How an IPO Works Behind the Broker App"
+description: "A clearing-broker view of what happens after an investor expresses interest in an IPO, from the prospectus and demand book to allocation, DTC book-entry custody, settlement, and reconciliation."
+subtitle: "What happens between clicking an IPO subscription button and seeing shares in your account."
+publishedAt: 2026-05-24
+updatedAt: 2026-05-24
+tags:
+  - clearing
+  - settlement
+  - ipo
+heroImage: "/assets/posts/how-an-ipo-works.png"
+heroAlt: "Flow diagram showing IPO investor interest, broker collection, underwriter allocation, issuer records, DTC book-entry custody, broker omnibus account, customer sub-ledger, and reconciliation."
+themeColor: "slate-teal"
+canonicalUrl: ""
+recommendedPosts: []
+draft: false
+---
+
+When a famous private company files to go public, most of the public conversation focuses on valuation, hype, and whether the stock will pop on day one.
+
+SpaceX is a good example. [Space Exploration Technologies Corp. filed a Form S-1 registration statement with the SEC on May 20, 2026](https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm). That filing is the public document most investors will read to understand the company, the offering, the risks, and the terms as they become available. But for an investor using a broker app, the S-1 is only the visible start of the journey.
+
+The more interesting operational question is simpler:
+
+When you tap "subscribe" or "indicate interest" in an IPO, what actually has to happen before shares appear in your account?
+
+An IPO is not just a company selling shares to the public. It is also a chain of demand collection, allocation decisions, market infrastructure setup, book-entry custody, internal broker records, settlement, and reconciliation. The broker app makes it feel like one button. Behind that button is a small financial supply chain.
+
+<figure class="article-figure article-figure--primary">
+  <img
+    src="/assets/posts/how-an-ipo-works.png"
+    alt="Flow diagram showing the IPO process from investor interest to broker allocation, DTC custody, customer sub-ledger records, and reconciliation."
+  />
+  <figcaption>Diagram: a simplified view of the IPO flow from investor demand to ownership infrastructure.</figcaption>
+</figure>
+
+## The Front Stage: Prospectus, Roadshow, And Pricing
+
+The public-facing story starts with the company and its underwriters.
+
+In a U.S. IPO, the company files a [registration statement](https://www.sec.gov/resources-small-businesses/going-public/what-registration-statement) with the SEC, often on Form S-1. The prospectus is the key investor-facing part of that filing. It describes the company's business, financial condition, risk factors, management, and offering terms. The SEC reviews the disclosure, but that review is not the same as saying the SEC approves the investment.
+
+For a popular IPO, this is the part most people notice:
+
+- the company files publicly;
+- media and investors discuss the filing;
+- underwriters market the deal;
+- investors look for access through brokerages;
+- the company and underwriters eventually settle on final terms.
+
+That is the front stage. It matters, but it does not explain why one investor gets shares, another gets fewer shares than requested, and a third gets nothing.
+
+To understand that, we need to move one layer down.
+
+## The Broker App Is A Demand Collection Surface
+
+When a broker app shows an IPO subscription page, the investor is usually not placing a normal market order.
+
+In many cases, the investor is submitting an indication of interest, often shortened to IOI. [Investor.gov explains that IPO underwriters typically collect indications of interest before the registration statement becomes effective](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-17), then use that demand picture to help recommend pricing to the issuer. In plain English, an IOI means:
+
+"If this IPO is offered to me under acceptable terms, I would like to buy this many shares."
+
+That interest is useful, but it is not a guarantee. It does not mean the investor will receive the requested number of shares. It may not even mean the investor will receive any shares.
+
+The broker collects these expressions of interest from its customers. Those signals are then used, directly or indirectly, to help the deal team understand demand. Across the broader offering, underwriters build a picture of who wants shares, how much demand exists, and where pricing may land.
+
+For the user, this feels like a simple app workflow. You open the app, read the prospectus link, enter a quantity, and submit.
+
+For the broker, it is an allocation problem.
+
+The broker has to answer questions like:
+
+- How many shares did the firm receive from the IPO allocation?
+- Which customers expressed interest?
+- Are there eligibility rules or account restrictions?
+- Is the customer likely to hold the shares or immediately flip them?
+- How should the broker avoid giving too much of a scarce allocation to one account?
+
+That is why IPO access can feel inconsistent to retail investors. The app may look simple, but the supply of shares is limited and the broker is making a distribution decision.
+
+## Why Allocation Matters After Pricing
+
+Most IPO explainers stop at pricing. From a broker's point of view, allocation is often the more interesting moment.
+
+Imagine 100,000 customers express interest in the same IPO. The broker does not necessarily receive enough shares to satisfy all of them. Even if the broader IPO is large, each broker or distribution channel may only receive a limited allocation.
+
+So the broker has to turn demand into actual customer positions.
+
+Different brokers may use different allocation logic, but the basic considerations are easy to understand:
+
+- account size and relationship history;
+- whether the customer meets eligibility requirements;
+- past trading behavior;
+- whether the customer has repeatedly flipped IPO shares;
+- concentration limits;
+- fairness policies;
+- operational limits.
+
+The purpose is not only commercial. A broker also wants a defensible process. IPO shares can be scarce, and scarce offerings create fairness and conduct risk. That is why IPO allocation is not just a business decision; it sits inside a regulated distribution environment, including rules such as [FINRA Rule 5131 on new issue allocations and distributions](https://www.finra.org/rules-guidance/rulebooks/finra-rules/5131).
+
+For the investor, the result is usually one of three outcomes:
+
+- full allocation: you receive what you requested;
+- partial allocation: you receive fewer shares than requested;
+- no allocation: you do not receive shares in the IPO.
+
+This is the first important takeaway:
+
+Submitting interest is not the same thing as buying the shares.
+
+## The Shares Need A Record-Keeping System
+
+After pricing and allocation, the story shifts from sales to infrastructure.
+
+Public-company shares need to be recordable, transferable, and settleable. In modern U.S. markets, that usually means the shares are held and moved through electronic book-entry systems rather than through paper certificates.
+
+This is where the transfer agent and DTC enter the story.
+
+The transfer agent maintains the issuer's shareholder records and helps administer share issuance records. DTC, part of DTCC, is the central securities depository that supports electronic custody and book-entry transfer for eligible securities. DTCC's overview of [how issuers work with DTC](https://www.dtcc.com/asset-services/issuer-services/how-issuers-work-with-dtc) is a useful reference for this ownership infrastructure, and its [FAST program](https://www.dtcc.com/asset-services/agent-services/fast) helps connect transfer-agent records with DTC's book-entry environment.
+
+For a public explainer, the simplified model is:
+
+- the company issues shares;
+- the transfer agent helps maintain the official shareholder record;
+- DTC makes the shares operationally holdable and transferable across the market;
+- brokers hold shares through their participant or omnibus positions;
+- the broker's internal books show which end customers are entitled to which positions.
+
+This is why the ownership story can be confusing.
+
+In a brokerage account, the customer is usually the beneficial owner. The customer gets the economic exposure. But the market's registered-owner and custody chain may run through DTC's nominee and broker-level records. That structure is not visible in the app, but it is what makes modern high-volume trading and settlement possible.
+
+The broker app shows a clean customer position. Behind the scenes, that customer position is part of a larger ledger hierarchy.
+
+## Visible In The App Does Not Mean The Back Office Is Done
+
+At some point, the customer may see the IPO shares in the account.
+
+That moment feels final. It usually is the moment the user cares about. But operationally, there may still be settlement and reconciliation work happening.
+
+Settlement is the process that completes delivery of securities and payment. DTCC describes [settlement](https://www.dtcc.com/clearing-and-settlement-services/settlement) as the final step in which securities ownership and cash are transferred. Reconciliation is the broker's process of making sure its internal customer records match its external custody and clearing records.
+
+<figure class="article-figure article-figure--primary">
+  <img
+    src="/assets/posts/ipo-visible-position-vs-settlement.png"
+    alt="Diagram showing IPO settlement from broker app position to broker sub-ledger and DTC settlement records, tied together by reconciliation."
+  />
+  <figcaption>Diagram: the broker app, broker sub-ledger, and DTC settlement records each show a different layer of the same position.</figcaption>
+</figure>
+
+In simple terms:
+
+- DTC and related market infrastructure reflect the securities movement at the market level;
+- the broker reflects the customer-level entitlement in its internal sub-ledger;
+- the broker reconciles the two so the total shares it says customers own match the total shares it actually holds or controls through the infrastructure.
+
+If everything works, the investor never thinks about this. The app just shows the position.
+
+But this hidden layer is exactly why clearing and settlement matter. The user experience is only credible because the underlying records line up.
+
+## What Retail Investors Usually Misunderstand
+
+There are three common misunderstandings around IPO participation.
+
+First, an indication of interest is not an order guarantee. It is a demand signal and a request for allocation.
+
+Second, the broker does not have unlimited supply. Even if thousands of customers want the deal, the broker may only receive a small amount to distribute.
+
+Third, seeing shares in the app is not the whole ownership story. The app is a customer-facing representation of a deeper chain involving the issuer, transfer agent, DTC, broker records, settlement, and reconciliation.
+
+That does not mean the process is broken. It means the broker screen hides complexity.
+
+The user should not need to understand DTC, transfer agents, omnibus accounts, or reconciliation just to participate in an IPO. But knowing that these layers exist makes the IPO screen easier to interpret: the request, the allocation result, and the final account position are related, but they are not the same thing.
+
+The button is not the process.
+
+The button is the front door to the process.
