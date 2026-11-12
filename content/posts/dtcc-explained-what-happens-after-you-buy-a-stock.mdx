@@ -1,0 +1,179 @@
+---
+title: "DTCC Explained: What Happens After You Buy a Stock?"
+description: "A beginner's guide to clearing, settlement, and custody, explaining how DTC, NSCC, FICC, ACATS, and cost basis services fit into the trade lifecycle."
+subtitle: "A beginner's guide to the trade lifecycle, and where DTC, NSCC, and FICC fit."
+publishedAt: 2026-11-11
+updatedAt: 2026-11-11
+tags:
+  - clearing
+  - settlement
+heroImage: "/assets/posts/dtcc-explained/trade-lifecycle.png"
+heroAlt: "A simplified stock trade lifecycle showing execution, NSCC clearing, DTC securities settlement, and ongoing holding and servicing."
+themeColor: "slate-teal"
+canonicalUrl: ""
+recommendedPosts:
+  - how-an-ipo-works-behind-the-broker-app
+draft: false
+---
+
+Your stock order fills in seconds. So why is settlement normally scheduled for the next business day? <a href="https://dtcclearning.com/products-and-services/itp/itp-cross-product/2860-t1-and-itp.html">[4]</a>
+
+Suppose you buy 10 shares at $50 each. The app shows "Filled," and the shares appear in your account. That screen tells you the trade has been agreed. The institutions behind it still need to deliver the shares, pay for them, and keep their records aligned.
+
+**What happens between "I bought it" and "the exchange is complete"?**
+
+That gap is a useful entry point into **The Depository Trust & Clearing Corporation (DTCC)**, the parent organization of businesses supporting different parts of post-trade processing. Its subsidiaries include DTC, NSCC, and FICC. <a href="https://www.dtcc.com/legal/businesses-and-subsidiaries">[1]</a>
+
+Start with the journey; the names become easier to remember once you know the work.
+
+<figure class="article-figure">
+  <img
+    src="/assets/posts/dtcc-explained/trade-lifecycle.png"
+    alt="Four stages of an eligible stock trade: execution through a broker and venue, NSCC clearing, DTC securities settlement with related money settlement, and ongoing holding and servicing."
+    width="1600"
+    height="1300"
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>
+    Figure 1. A simplified stock trade lifecycle. The fill appears at the first
+    stage; delivery, payment, and ongoing servicing involve additional work.
+    Sources: references 2-8.
+  </figcaption>
+</figure>
+
+## 1. Execution: Agreeing to the Trade
+
+Execution is the moment a buy order meets a sell order and a trade is agreed. In our example, the agreement is to exchange 10 shares for $500, before any fees.
+
+Your broker routes the order to a trading venue or another execution provider. Once it is filled, the broker can show you the result.
+
+But agreeing to an exchange and completing the exchange are different events. Think of execution as establishing the deal: the shares and money still need to be delivered.
+
+DTC and NSCC enter the story through the processing that follows execution. They do not operate the stock exchange where your order was filled.
+
+## 2. Clearing: Working Out What Each Firm Must Deliver
+
+A single purchase is easy to describe: one side owes shares, and the other owes money. Across the market, firms process many purchases and sales for many customers. Clearing organizes those transactions into obligations that can be fulfilled.
+
+For this introduction, an **obligation** simply means something a firm must deliver or pay.
+
+Clearing addresses questions such as: What transactions were submitted? What does each firm owe? Can purchases and sales be offset? How will the risk of a firm failing to perform be managed?
+
+For many eligible U.S. stock transactions, this is where **National Securities Clearing Corporation (NSCC)** plays a central role. Its trade capture service receives and validates submitted transactions, and its clearing services organize the resulting obligations. <a href="https://dtcclearning.com/products-and-services/equities-clearing/utc.html">[2]</a><a href="https://dtcclearning.com/products-and-services/equities-clearing/cns.html">[3]</a>
+
+### Why Netting Matters
+
+Suppose a clearing firm buys 100 shares and sells 70 shares of the same stock for the same settlement date. Ignoring other activity, it needs to receive a net 30 shares.
+
+This offsetting is called **netting**. It reduces the securities movements required between firms. The original customer purchases and sales still remain in the broker's records.
+
+NSCC's **Continuous Net Settlement (CNS)** service performs this work for eligible securities. NSCC also becomes the **central counterparty**: it stands between the clearing firms as buyer to sellers and seller to buyers for covered transactions. That arrangement is supported by risk management, including requirements for members to provide financial resources. <a href="https://dtcclearning.com/products-and-services/equities-clearing/cns.html">[3]</a> [NSCC risk management][risk]
+
+You do not need to understand the detailed risk calculations yet. The key idea is that clearing turns a large collection of trades into managed delivery and payment obligations.
+
+## 3. Settlement: Completing the Exchange
+
+Settlement is the fulfillment of those obligations: the securities are delivered and the related payment is made.
+
+For most U.S. stock trades, the standard cycle is **T+1**, meaning the next business day after the trade date. A Friday trade normally settles Monday if no relevant holiday intervenes. This is why an order can be filled before it has settled. <a href="https://dtcclearning.com/products-and-services/itp/itp-cross-product/2860-t1-and-itp.html">[4]</a>
+
+**The Depository Trust Company (DTC)** supplies the securities depository and book-entry infrastructure used to settle many of these transactions. A depository holds securities for participating financial institutions. **Book entry** means transfers are recorded electronically, rather than by physically moving stock certificates. <a href="https://dtcclearning.com/products-and-services/asset-services/issuer-services.html">[5]</a><a href="https://dtcclearning.com/products-and-services/settlement/deliver-orders.html">[6]</a>
+
+In a simplified eligible stock-market flow, NSCC determines the net securities obligations, and DTC processes the securities movements. Money settlement processes complete the related payments between financial institutions. <a href="https://dtcclearning.com/products-and-services/equities-clearing/cns.html">[3]</a><a href="https://dtcclearning.com/products-and-services/settlement/deliver-orders.html">[6]</a>
+
+DTC also applies settlement controls, including checks related to available collateral and limits on amounts owed. A trade being agreed does not mean every subsequent movement can complete automatically. <a href="https://dtcclearning.com/products-and-services/settlement/risk-management-controls.html">[7]</a>
+
+The distinction to remember is straightforward: **clearing establishes and manages what must be exchanged; settlement completes that exchange.**
+
+## 4. Holding the Shares: The Work Continues
+
+After settlement, your shares remain part of an ongoing recordkeeping and servicing relationship.
+
+For ordinary brokerage holdings, DTC records positions for its participating institutions, while the brokerage firm's records identify its individual customers' interests. DTC does not maintain a separate ownership record for every retail investor. Your broker must keep its customer records aligned with the securities held through its clearing and custody arrangements. <a href="https://dtcclearning.com/products-and-services/asset-services/issuer-services.html">[5]</a>
+
+DTC's responsibilities also extend to **corporate actions**: events affecting a security or payments to its holders. Examples include dividends, interest payments, redemptions, and reorganizations such as mergers. <a href="https://dtcclearning.com/products-and-services/asset-services/corporate-actions-processing.html">[8]</a>
+
+For a cash dividend, DTC processes payments for participants holding the security, and the broker allocates the appropriate amounts to customer accounts. Other events may require instructions, such as choosing whether to participate in a tender offer. <a href="https://dtcclearning.com/products-and-services/asset-services/issuer-services.html">[5]</a><a href="https://dtcclearning.com/products-and-services/asset-services/corporate-actions-processing.html">[8]</a>
+
+Settlement therefore closes a particular trade's delivery and payment process. It does not end the operational work associated with owning the security.
+
+## Putting DTC, NSCC, and FICC on the Map
+
+With the lifecycle in view, the organizational structure becomes easier to understand.
+
+<figure class="article-figure">
+  <img
+    src="/assets/posts/dtcc-explained/dtcc-organization.png"
+    alt="DTCC as parent of NSCC, DTC, and FICC, with their principal roles and the GSD and MBSD divisions shown under FICC."
+    width="1600"
+    height="1120"
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>
+    Figure 2. Selected subsidiaries, not the complete DTCC group. NSCC and DTC
+    support different parts of the stock example; FICC serves distinct
+    fixed-income markets. Sources: references 1, 12-13.
+  </figcaption>
+</figure>
+
+This is an introductory map, with some overlap between responsibilities. Clearing organizations also support settlement, and DTC has its own settlement risk controls. <a href="https://www.dtcc.com/legal/businesses-and-subsidiaries">[1]</a><a href="https://dtcclearning.com/products-and-services/settlement/risk-management-controls.html">[7]</a>
+
+**Fixed Income Clearing Corporation (FICC)** has two principal divisions. Its **Government Securities Division (GSD)** serves government securities activity, including purchases, sales, and repo financing. Its **Mortgage-Backed Securities Division (MBSD)** supports the agency mortgage-backed securities market. Their workflows reflect the instruments involved and should not be assumed to follow the stock example unchanged. <a href="https://dtcclearning.com/products-and-services/fixed-income-clearing/1997-government-securities-division.html">[12]</a><a href="https://dtcclearning.com/products-and-services/fixed-income-clearing/2047-mbsd.html">[13]</a>
+
+Also, the words "fixed income" do not mean every bond goes through FICC. NSCC's scope includes corporate and municipal debt. <a href="https://www.dtcc.com/legal/businesses-and-subsidiaries">[1]</a>
+
+## Other Services Around the Lifecycle
+
+Now imagine moving your portfolio to another broker: the shares are recorded in the new account, but their acquisition information has not yet arrived. In this hypothetical scenario, the asset movement and the information transfer are separate tasks. That is why the service map extends beyond trading and settlement. [ACATS][acats] [CBRS][cbrs]
+
+| Need                                                   | Service                                                                    | Introductory explanation                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------------------------------------ | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Bring trades into processing                           | **Universal Trade Capture (UTC)** and **Consolidated Trade Summary (CTS)** | Capture and validate submitted equity transactions and identify their expected settlement path. <a href="https://dtcclearning.com/products-and-services/equities-clearing/utc.html">[2]</a>                                                                                                                                                                                                                                                                          |
+| Offset eligible purchases and sales                    | **Continuous Net Settlement (CNS)**                                        | Calculates net securities positions and manages the related clearing obligations. <a href="https://dtcclearning.com/products-and-services/equities-clearing/cns.html">[3]</a>                                                                                                                                                                                                                                                                                        |
+| Maintain certain obligations still awaiting completion | **Obligation Warehouse (OW)**                                              | Matches and tracks open broker-to-broker obligations outside CNS, including certain failed deliveries. <a href="https://dtcclearning.com/products-and-services/equities-clearing/obligation-warehouse/1765-ow-overview.html">[9]</a>                                                                                                                                                                                                                                 |
+| Move a customer's portfolio to another firm            | **Automated Customer Account Transfer Service (ACATS)**                    | Standardizes the transfer of account assets between participating firms. [ACATS overview][acats]                                                                                                                                                                                                                                                                                                                                                                     |
+| Send acquisition information with transferred assets   | **Cost Basis Reporting Service (CBRS)**                                    | Transfers cost basis information, helping the receiving firm maintain the records associated with the assets. [CBRS overview][cbrs]                                                                                                                                                                                                                                                                                                                                  |
+| Process events affecting securities                    | **DTC Corporate Actions Processing**, with related NSCC processes          | Supports payments and changes affecting securities; NSCC also handles event-related effects on supported open obligations. <a href="https://dtcclearning.com/products-and-services/equities-clearing/cns.html">[3]</a><a href="https://dtcclearning.com/products-and-services/asset-services/corporate-actions-processing.html">[8]</a><a href="https://dtcclearning.com/products-and-services/equities-clearing/obligation-warehouse/1765-ow-overview.html">[9]</a> |
+
+**Cost basis** is the value used as the starting point for calculating a taxable gain or loss, subject to applicable adjustments. ACATS supports the account asset transfer, while CBRS carries cost basis information between firms.
+
+Corporate actions can also affect a trade whose delivery is still outstanding. That explains why the topic appears under both DTC and NSCC services: one event can affect securities already held and obligations still awaiting completion. <a href="https://dtcclearning.com/products-and-services/equities-clearing/cns.html">[3]</a><a href="https://dtcclearning.com/products-and-services/asset-services/corporate-actions-processing.html">[8]</a><a href="https://dtcclearning.com/products-and-services/equities-clearing/obligation-warehouse/1765-ow-overview.html">[9]</a>
+
+DTCC's wider services include institutional trade processing and mutual fund processing. Those areas extend the map to other participants and transaction types. <a href="https://dtcclearning.com/products-and-services/mutual-fund-services.html">[10]</a><a href="https://dtcclearning.com/products-and-services/itp.html">[14]</a>
+
+## A Starting Point for Understanding the Back Office
+
+The useful sequence is: a trade is agreed, its obligations are organized, the exchange is completed, and the resulting holdings continue to be maintained and serviced.
+
+DTCC's businesses support different parts of that journey. NSCC helps organize and manage eligible clearing obligations; DTC provides securities holding, movement, and servicing infrastructure; and FICC brings central clearing to particular fixed-income markets.
+
+This lifecycle is enough to place the names before learning their mechanics. Netting, failed deliveries, corporate actions, and account transfers each deserve a separate article. Here, the goal is to see how those pieces connect to the purchase that first appeared as a single line in a brokerage app.
+
+## Sources and Further Reading
+
+Service descriptions are based primarily on the DTCC Learning Center, consulted November 11, 2026. Some detailed resources require login. Examples are simplified for orientation.
+
+1. [DTCC: Businesses and Subsidiaries](https://www.dtcc.com/legal/businesses-and-subsidiaries)
+2. [Universal Trade Capture][utc] and [Consolidated Trade Summary][cts]
+3. [Continuous Net Settlement][cns]
+4. [T+1 and ITP](https://dtcclearning.com/products-and-services/itp/itp-cross-product/2860-t1-and-itp.html)
+5. [Issuer Services and Ownership FAQs](https://dtcclearning.com/products-and-services/asset-services/issuer-services.html)
+6. [Deliver Orders](https://dtcclearning.com/products-and-services/settlement/deliver-orders.html)
+7. [DTC Settlement Risk Management](https://dtcclearning.com/products-and-services/settlement/risk-management-controls.html)
+8. [Corporate Actions Processing](https://dtcclearning.com/products-and-services/asset-services/corporate-actions-processing.html)
+9. [Obligation Warehouse Overview][ow] and [CTS][cts]
+10. [Mutual Fund Services](https://dtcclearning.com/products-and-services/mutual-fund-services.html)
+11. [SMART/Track for CNS Corporate Actions](https://dtcclearning.com/products-and-services/equities-clearing/cns/smart-track-for-cns-corporate-actions.html)
+12. [Government Securities Division](https://dtcclearning.com/products-and-services/fixed-income-clearing/1997-government-securities-division.html)
+13. [Mortgage-Backed Securities Division](https://dtcclearning.com/products-and-services/fixed-income-clearing/2047-mbsd.html)
+14. [Institutional Trade Processing](https://dtcclearning.com/products-and-services/itp.html)
+
+[utc]: https://dtcclearning.com/products-and-services/equities-clearing/utc.html
+[cts]: https://dtcclearning.com/products-and-services/equities-clearing/cts.html
+[cns]: https://dtcclearning.com/products-and-services/equities-clearing/cns.html
+[ow]: https://dtcclearning.com/products-and-services/equities-clearing/obligation-warehouse/1765-ow-overview.html
+[acats]: https://dtcclearning.com/products-and-services/equities-clearing/acats.html
+[cbrs]: https://dtcclearning.com/products-and-services/equities-clearing/cbrs.html
+[risk]: https://dtcclearning.com/products-and-services/equities-clearing/nscc-risk-management.html
